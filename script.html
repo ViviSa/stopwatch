@@ -3,9 +3,9 @@
 <head>
 	<title></title>
 	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-
 	<div id="clock">
 		<span id="min">02:</span><span id="sec">00</span>
 	</div>
@@ -13,81 +13,45 @@
 	<button id="buttonStart">Start</button>
 	<button id="buttonStop">Stop</button>
 </div>
-	<style type="text/css">
-	#stopwatch{
-		margin: 0 auto;
-		text-align: center;
-	}
-	#buttonStart, #buttonStop{
-		background: white;
-	    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.35);
-	    color: blue;
-	    font-weight: bold;
-	    font-size: 21px;
-	    border-radius: none;
-	    padding: 11px 25px;
-	    text-transform: uppercase;
-	}
-	#clock{
-		margin: 0 auto;
-		margin-bottom: 30px;
-		margin-top: 30px;
-	    width: 300px;
-	    height: 300px;
-	    background: white;
-	    border-radius: 150px;
-	    font-size: 30px;
-	    line-height: 300px;
-	    display: block;
-	    box-shadow: 0px 4px 10px 3px rgba(0,0,0,0.35);
-	    text-align: center;
-	    color: blue;
-	    font-weight: bold;
-	}
-	</style>
 	<script type="text/javascript">
-	var clock = document.getElementById('clock');
-	var min = document.getElementById('min').innerHTML;
-	var sec = document.getElementById('sec').innerHTML;
+	let clock = document.getElementById('clock');
+	let min = document.getElementById('min');
+	let sec = document.getElementById('sec');
 
-	var start = document.getElementById('buttonStart');
-	var stop = document.getElementById('buttonStop');
-	var timer = false;
-	
-	
-start.addEventListener('click', function(){
+	let startButton  = document.getElementById('buttonStart');
+	let stopButton = document.getElementById('buttonStop');
+	let timer = false;
+
+  startButton.addEventListener('click', function(){
 	timer = true;
 	getReady()
 });
 
-stop.addEventListener('click', function(){
+  stopButton.addEventListener('click', function(){
 	timer = false;
 });
 
 function getReady(){
 	setInterval( function(){
-		if(timer == true){
-			if(sec > 0){
+		if (timer == true){
+			if (sec > 0){
 				sec--;
-			}else{
+			}else {
 				sec = 59;
-			}if(sec < 0){
+			}if (sec < 0){
 				min--;
-			}else{
+			}else {
 				min -= 1;
-			}if(min == 0 && sec == 0){
-				alert('Время вышло')
-			}else if(min < 10 || sec < 10){
-				min = '0'+ min;
-				sec = '0'+ sec;
+			}if (min == 0 && sec == 0){
+				alert ('Время вышло')
+			}else if (min < 10 || sec < 10){
+				min = '0' + min;
+				sec = '0' + sec;
 			}
-			clock.innerHTML = min + ':' + sec;	
-
+			clock.innerHTML = min + ':' + sec;
 		}
 	},1000)
-	};
-
-
+};
 </script>
 </body>
 </html>
