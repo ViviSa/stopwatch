@@ -6,58 +6,54 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<div id="clock">
-		<span id="min">02:</span><span id="sec">00</span>
-	</div>
-  <div id="stopwatch">
-    <button id="buttonStart">Start</button>
+<div id="clock">
+	<span id="min">02:</span><span id="sec">00</span>
+</div>
+<div id="stopwatch">
+	<button id="buttonStart">Start</button>
     <button id="buttonStop">Stop</button>
     <button id="resetButton">Resert</button>
-  </div>
-	<script type="text/javascript">
-    let clock = document.getElementById('clock');
+</div>
+<script type="text/javascript">
+	let clock = document.getElementById('clock');
     let min = document.getElementById('min');
     let sec = document.getElementById('sec');
 
     let startButton  = document.getElementById('buttonStart');
     let stopButton = document.getElementById('buttonStop');
     let resetButton = document.getElementById('resetButton');
-    let timer = false;
-
+    let t;
+    min = 2;
+    sec = 0;
     startButton.addEventListener('click', function(){
-      timer = true;
-      getReady()
+      getReady();
     });
 
     stopButton.addEventListener('click', function(){
-      timer = false;
+      clearInterval(t);
     });
     resetButton.addEventListener('click', function(){
+      clearInterval(t);
       clock.innerHTML = '02:00';
-      timer = false;
-      min ='02';
-      sec='00';
-    })
+      min = 2;
+      sec = 0;
+    });
 
     function getReady(){
-      setInterval( function(){
-        if (timer == true){
+      t = setInterval(function(){
           if (sec > 0){
-            sec--;
-          }else {
-            sec = 59;
-          }if (sec < 0){
-            min--;
-          }else {
-            min -= 1;
-          }if (min == 0 && sec == 0){
-            alert ('Время вышло')
-          }else if (min < 10 || sec < 10){
+              sec--;
+          } else {
+              sec=59;
+              min--;
+          }  if (min == 0 && sec == 0){
+            clearInterval(t);
+            alert ('Время вышло');
+          } /*else if (min < 10 || sec < 10 ){
             min = '0' + min;
             sec = '0' + sec;
-          }
-          clock.innerHTML = min + ':' + sec;
-        }
+          }*/
+          clock.innerHTML = (min ? (min > 9 ? min : "0" + min) : "00") + ":" + (sec > 9 ? sec : "0" + sec);
         },1000)
     };
 </script>
