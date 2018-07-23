@@ -9,10 +9,11 @@
 	<div id="clock">
 		<span id="min">02:</span><span id="sec">00</span>
 	</div>
-<div id="stopwatch">
-	<button id="buttonStart">Start</button>
-	<button id="buttonStop">Stop</button>
-</div>
+  <div id="stopwatch">
+    <button id="buttonStart">Start</button>
+    <button id="buttonStop">Stop</button>
+    <button id="resetButton">Resert</button>
+  </div>
 	<script type="text/javascript">
     let clock = document.getElementById('clock');
     let min = document.getElementById('min');
@@ -20,6 +21,7 @@
 
     let startButton  = document.getElementById('buttonStart');
     let stopButton = document.getElementById('buttonStop');
+    let resetButton = document.getElementById('resetButton');
     let timer = false;
 
     startButton.addEventListener('click', function(){
@@ -30,6 +32,12 @@
     stopButton.addEventListener('click', function(){
       timer = false;
     });
+    resetButton.addEventListener('click', function(){
+      clock.innerHTML = '02:00';
+      timer = false;
+      min ='02';
+      sec='00';
+    })
 
     function getReady(){
       setInterval( function(){
