@@ -14,44 +14,44 @@
 	<button id="buttonStop">Stop</button>
 </div>
 	<script type="text/javascript">
-	let clock = document.getElementById('clock');
-	let min = document.getElementById('min');
-	let sec = document.getElementById('sec');
+    let clock = document.getElementById('clock');
+    let min = document.getElementById('min');
+    let sec = document.getElementById('sec');
 
-	let startButton  = document.getElementById('buttonStart');
-	let stopButton = document.getElementById('buttonStop');
-	let timer = false;
+    let startButton  = document.getElementById('buttonStart');
+    let stopButton = document.getElementById('buttonStop');
+    let timer = false;
 
-  startButton.addEventListener('click', function(){
-	timer = true;
-	getReady()
-});
+    startButton.addEventListener('click', function(){
+      timer = true;
+      getReady()
+    });
 
-  stopButton.addEventListener('click', function(){
-	timer = false;
-});
+    stopButton.addEventListener('click', function(){
+      timer = false;
+    });
 
-function getReady(){
-	setInterval( function(){
-		if (timer == true){
-			if (sec > 0){
-				sec--;
-			}else {
-				sec = 59;
-			}if (sec < 0){
-				min--;
-			}else {
-				min -= 1;
-			}if (min == 0 && sec == 0){
-				alert ('Время вышло')
-			}else if (min < 10 || sec < 10){
-				min = '0' + min;
-				sec = '0' + sec;
-			}
-			clock.innerHTML = min + ':' + sec;
-		}
-	},1000)
-};
+    function getReady(){
+      setInterval( function(){
+        if (timer == true){
+          if (sec > 0){
+            sec--;
+          }else {
+            sec = 59;
+          }if (sec < 0){
+            min--;
+          }else {
+            min -= 1;
+          }if (min == 0 && sec == 0){
+            alert ('Время вышло')
+          }else if (min < 10 || sec < 10){
+            min = '0' + min;
+            sec = '0' + sec;
+          }
+          clock.innerHTML = min + ':' + sec;
+        }
+        },1000)
+    };
 </script>
 </body>
 </html>
